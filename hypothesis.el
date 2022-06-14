@@ -96,7 +96,7 @@ Helper function for `hypothesis-data'."
                       hypothesis-quote-sufix)))
     (when (eq 'annotation (alist-get 'type x))
       (insert "\n\n- "))
-    (insert (concat (alist-get 'text x) "\n\n\n"))))
+    (insert (concat (alist-get 'text x) "\n\n"))))
 
 (defun hypothesis-request (on-success &optional params exclude-user)
   "Make a request to hypothes.is/api/search and call function ON-SUCCESS.
