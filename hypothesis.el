@@ -33,6 +33,8 @@
 (defvar hypothesis-quote-sufix "#+END_QUOTE"
   "Suffix for block quote.")
 
+(defvar hypothesis-include-time-stamps t)
+
 (defvar hypothesis--site-level 1)
 (defvar hypothesis--last-update nil)
 
@@ -85,7 +87,8 @@ Helper function for `hypothesis-data'."
                    (lambda (row1 row2)
                      (< (or (alist-get 'location-start row1) 0)
                         (or (alist-get 'location-start row2) 0)))))
-    (org-insert-time-stamp (alist-get 'update-time x) t t nil "\n")
+    (when hypothesis-include-time-stamps
+          (org-insert-time-stamp (alist-get 'update-time x) t t nil "\n"))
     (when-let ((highlight (alist-get 'highlight x)))
       (insert (format "%s\n%s\n%s"
                       hypothesis-quote-prefix
