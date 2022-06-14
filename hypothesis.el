@@ -79,10 +79,10 @@ Helper function for `hypothesis-data'."
 
 (defun hypothesis-insert-site-data (site)
   "Insert the data from SITE as `org-mode' text."
-  (insert (format "%s [[%s][%s]]\n"
+  (insert (format "%s %s\n\n%s\n\n"
                   (make-string hypothesis--site-level ?*)
-                  (car site)
-                  (alist-get 'title (cadr site))))
+                  (alist-get 'title (cadr site))
+                  (car site)))
   (dolist (x (sort (cdr site)
                    (lambda (row1 row2)
                      (< (or (alist-get 'location-start row1) 0)
